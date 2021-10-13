@@ -103,7 +103,7 @@ namespace EZOffertes.Server
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NDY2MDAyQDMxMzkyZTMyMmUzMEVkVWpRVkRHRm9kaVcrNElIK3d0NWZsU0lrZmt5TnJxdTQyVTEvWlVTOUE9");
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(Configuration.GetSection("Syncfusion")["LicenseKey"] );
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
