@@ -1,0 +1,13 @@
+﻿@inherits EmployeeSelectBase
+
+@if (Employees == null)
+{
+    <option>Loading...</option>
+}
+else
+{
+    @foreach (Employee value in Employees)
+    {
+        <option value="@value.EmployeeId">@value.FirstName @value.FamilyNamePrefix @value.FamilyName</option>
+    }
+}

@@ -1,0 +1,173 @@
+﻿<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="/" class="brand-link">
+        <img src="img/EZAccess.png" alt="EZAccess Logo" class="brand-image" style="max-width:100%; margin-inline:0">
+        <!--<span class="brand-text font-weight-light">EZ Offertes</span>-->
+    </a>
+
+        <!-- Sidebar -->
+    <div class="sidebar" style="overflow-y:auto">
+        <!-- Sidebar user panel (optional) -->
+
+        <AuthorizeView>
+            <NotAuthorized>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="/identity/account/login" class="d-block">Log in</a>
+                    </div>
+                </div>
+            </NotAuthorized>
+            <Authorized>
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="" class="d-block">@context.User.Identity.Name</a>
+                    </div>
+                </div>
+
+                <!-- SidebarSearch Form -->
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column nav-legacy" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Add icons to the links using the .nav-icon class
+                with font-awesome or any other icon font library -->
+                        <li class="nav-item">
+                            <NavLink href="/NewCustomer/" class="nav-link" Match="NavLinkMatch.All">
+                                <i class="nav-icon fas fa-soap"></i>
+                                <p>
+                                    New Customer
+                                    <span class="right badge badge-danger">New</span>
+                                </p>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink href="/Customers/" class="nav-link" Match="NavLinkMatch.All">
+                                <i class="nav-icon fas fa-sink"></i>
+                                <p>
+                                    Go to Customer
+                                </p>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <NavLink href="/PurchaseOrders/" class="nav-link" Match="NavLinkMatch.All">
+                                <i class="nav-icon fas fa-clipboard"></i>
+                                <p>
+                                    Purchase Orders
+                                </p>
+                            </NavLink>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Product information
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <NavLink href="/Products/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-bath nav-icon"></i>
+                                        <p>Products</p>
+                                    </NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink href="/ProductSets/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-cubes nav-icon"></i>
+                                        <p>Product sets</p>
+                                    </NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink href="/ProductCategories/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-drafting-compass nav-icon"></i>
+                                        <p>Product Categories</p>
+                                    </NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink href="/UnitsOfMeasure/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-ruler nav-icon"></i>
+                                        <p>Units of measure</p>
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-money-check-alt"></i>
+                                <p>
+                                    Invoices
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <NavLink href="/Invoices/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-file-invoice-dollar nav-icon"></i>
+                                        <p>Invoices</p>
+                                    </NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink href="/Payments/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-coins nav-icon"></i>
+                                        <p>Payments</p>
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
+                                    Other Information
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <NavLink href="/Employees/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-user-friends nav-icon"></i>
+                                        <p>Employees</p>
+                                    </NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink href="/PersonTitles/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-restroom nav-icon"></i>
+                                        <p>Person Titles</p>
+                                    </NavLink>
+                                </li>
+                                <li class="nav-item">
+                                    <NavLink href="/ShippingMethods/" class="nav-link" Match="NavLinkMatch.All">
+                                        <i class="fas fa-truck nav-icon"></i>
+                                        <p>Shipping Methods</p>
+                                    </NavLink>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </Authorized>
+        </AuthorizeView>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>
+
+@code {
+    @inject NavigationManager NavigationManager;
+}

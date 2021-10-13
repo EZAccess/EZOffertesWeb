@@ -1,0 +1,29 @@
+﻿@page "/ShippingMethods/"
+@inherits ShippingMethodsBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Shipping Methods"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Shipping Methods">
+        <CardFreeContent>
+            <!-- Datagrid -->
+            <SfGrid DataSource="@ShippingMethods" ID="Grid" @ref="DefaultGrid"
+                    AllowFiltering="false" 
+                    AllowPaging="true" 
+                    AllowSorting="true" 
+                    AllowExcelExport="true" 
+                    AllowPdfExport="true"
+                    Toolbar="@ToolbarItems">
+                <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="ShippingMethod"></GridEvents>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field="ShippingMethodId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                    <GridColumn Field="ShippingMethodName" HeaderText="Shipping Method" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="Description" HeaderText="Description" TextAlign="TextAlign.Left" Width="120" />
+                </GridColumns>
+            </SfGrid>
+            <!-- Datagrid -->
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

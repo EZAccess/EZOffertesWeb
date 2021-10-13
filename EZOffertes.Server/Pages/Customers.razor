@@ -1,0 +1,34 @@
+﻿@page "/customers/"
+@inherits CustomersBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Go to Customer"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Customer">
+        <CardFreeContent>
+            @if (Relations == null)
+            {
+                <SfSpinner Visible="true" Label="Loading data ..." />
+            }
+            else
+            {
+                <SfGrid DataSource="@Relations" ID="Grid" @ref="DefaultGrid"
+                        AllowFiltering="true" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                        Toolbar="@ToolbarItems">
+                    <GridEvents RowSelected="HandleRowSelected" OnToolbarClick="HandleToolbarClick" TValue="Relation"></GridEvents>
+                    <GridEditSettings AllowAdding="false" AllowEditing="false" AllowDeleting="false" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                    <GridColumns>
+                        <GridColumn Field="RelationId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                        <GridColumn Field="RelationName" HeaderText="Name" TextAlign="TextAlign.Left" Width="120" />
+                        <GridColumn Field="IsCustomer" HeaderText="Customer" TextAlign="TextAlign.Center" Width="60" DisplayAsCheckBox="true" />
+                        <GridColumn Field="IsSupplier" HeaderText="Supplier" TextAlign="TextAlign.Center" Width="60" DisplayAsCheckBox="true" />
+                        <GridColumn Field="IsConsumer" HeaderText="Consumer" TextAlign="TextAlign.Center" Width="60" DisplayAsCheckBox="true" />
+                        <GridColumn Field="TsCreated" HeaderText="Created" TextAlign="TextAlign.Left" Width="60" AllowEditing="false" />
+                        <GridColumn Field="TsUpdated" HeaderText="Updated" TextAlign="TextAlign.Left" Width="60" AllowEditing="false" />
+                    </GridColumns>
+                </SfGrid>
+            }
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

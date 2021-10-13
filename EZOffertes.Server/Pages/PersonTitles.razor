@@ -1,0 +1,26 @@
+﻿@page "/PersonTitles/"
+@inherits PersonTitlesBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Person Titles"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Person Titles">
+        <CardFreeContent>
+            <!-- Datagrid -->
+            <SfGrid DataSource="@PersonTitles" ID="Grid" @ref="DefaultGrid"
+                                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                                            Toolbar="@ToolbarItems">
+                <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="PersonTitle"></GridEvents>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field="PersonTitleId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                    <GridColumn Field="Title" HeaderText="Title" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="TsCreated" HeaderText="Created" TextAlign="TextAlign.Right" Width="60" AllowEditing="false" />
+                    <GridColumn Field="TsUpdated" HeaderText="Updated" TextAlign="TextAlign.Right" Width="60" AllowEditing="false" />
+                </GridColumns>
+            </SfGrid>
+            <!-- Datagrid -->
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

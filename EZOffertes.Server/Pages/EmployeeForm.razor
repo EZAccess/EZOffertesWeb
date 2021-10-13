@@ -1,0 +1,213 @@
+﻿@page "/employee/{id}"
+@inherits EmployeeFormBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Employee Details"></ContentHeader>
+
+<MainContent>
+    @if (Employee == null)
+    {
+        <ContentCard CardHeader="Loading..."> 
+            <CardFreeContent>
+                <div class="text-center">
+                    <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                    <div class="text-bold pt-2">Loading...</div>
+                </div>
+            </CardFreeContent>
+        </ContentCard>
+    }
+    else
+    {
+        <ContentCard CardHeader=@($"{Employee.FamilyName}, {Employee.FirstName} {Employee.FamilyNamePrefix}")>
+            <CardFreeContent>
+                <EditForm Model="@Employee" OnValidSubmit="HandleValidSubmit" class="form-horizontal">
+                    <ObjectGraphDataAnnotationsValidator />
+                    <ValidationSummary />
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="EmployeeId">EmployeeId</label>
+                            <div class="col-sm-9">
+                                <InputNumber @bind-Value="Employee.EmployeeId" id="EmployeeId" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="FamilyName">Family name</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.FamilyName" id="FamilyName" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="FamilyNamePrefix">Prefix</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.FamilyNamePrefix" id="FamilyNamePrefix" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="FirstName">First name</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.FirstName" id="FirstName" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="Title">Title</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.Title" id="Title" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="Initials">Initials</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.Initials" id="Initials" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="Username">Username</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.Username" id="Username" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="EmailAddress">EmailAddress</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.EmailAddress" id="EmailAddress" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="FunctionName">FunctionName</label>
+                            <div class="col-sm-9">
+                                <InputText @bind-Value="Employee.FunctionName" id="FunctionName" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="Active">Active</label>
+                            <div class="col-sm-9">
+                                <InputCheckbox @bind-Value="Employee.Active" id="Active" class="form-control" type="text" />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label" for="Clearance">Clearance</label>
+                            <div class="col-sm-9">
+                                <InputNumber @bind-Value="Employee.Clearance" id="Clearance" class="form-control" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <button class="btn btn-default float-right" type="reset">Reset</button>
+                    </div>
+                </EditForm>
+            </CardFreeContent>
+        </ContentCard>
+    }
+</MainContent>
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-10 col-lg-9 col-xl-8 col-xxl-7">
+                @if (Employee == null)
+                {
+                    <div class="text-center">
+                        <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                        <div class="text-bold pt-2">Loading...</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card card-secondary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">@Employee.FamilyName, @Employee.FirstName @Employee.FamilyNamePrefix</h3>
+                            <!--<div class="card-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search" />
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-default">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>-->
+                        </div>
+                        <EditForm Model="@Employee" OnValidSubmit="HandleValidSubmit" class="form-horizontal">
+                            <ObjectGraphDataAnnotationsValidator />
+                            <ValidationSummary />
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="EmployeeId">EmployeeId</label>
+                                    <div class="col-sm-9">
+                                        <InputNumber @bind-Value="Employee.EmployeeId" id="EmployeeId" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="FamilyName">Family name</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.FamilyName" id="FamilyName" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="FamilyNamePrefix">Prefix</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.FamilyNamePrefix" id="FamilyNamePrefix" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="FirstName">First name</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.FirstName" id="FirstName" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="Title">Title</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.Title" id="Title" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="Initials">Initials</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.Initials" id="Initials" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="Username">Username</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.Username" id="Username" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="EmailAddress">EmailAddress</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.EmailAddress" id="EmailAddress" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="FunctionName">FunctionName</label>
+                                    <div class="col-sm-9">
+                                        <InputText @bind-Value="Employee.FunctionName" id="FunctionName" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="Active">Active</label>
+                                    <div class="col-sm-9">
+                                        <InputCheckbox @bind-Value="Employee.Active" id="Active" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label" for="Clearance">Clearance</label>
+                                    <div class="col-sm-9">
+                                        <InputNumber @bind-Value="Employee.Clearance" id="Clearance" class="form-control" type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button class="btn btn-primary" type="submit">Submit</button>
+                                <button class="btn btn-default float-right" type="reset">Reset</button>
+                            </div>
+                        </EditForm>
+                    </div>
+                }
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div><!-- /.content -->

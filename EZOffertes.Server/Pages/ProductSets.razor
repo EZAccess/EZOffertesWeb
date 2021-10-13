@@ -1,0 +1,25 @@
+﻿@page "/ProductSets/"
+@inherits ProductSetsBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Product Sets"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Product sets">
+        <CardFreeContent>
+            <!-- Datagrid -->
+            <SfGrid DataSource="@QuickProductSets" ID="Grid" @ref="DefaultGrid"
+                                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                                            Toolbar="@ToolbarItems">
+                <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="QuickProductSet"></GridEvents>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field="QuickProductSetId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                    <GridColumn Field="QuickCode" HeaderText="QuickCode" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="ProductDescription" HeaderText="Description" TextAlign="TextAlign.Left" Width="120" />
+                </GridColumns>
+            </SfGrid>
+            <!-- Datagrid -->
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

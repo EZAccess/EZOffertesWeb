@@ -1,0 +1,95 @@
+﻿
+<!-- Navbar -->
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="#" class="nav-link">Contact</a>
+        </li>
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+        <AuthorizeView>
+            <Authorized>
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <div class="navbar-search-block">
+                        <form class="form-inline">
+                            <div class="input-group input-group-sm">
+                                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </Authorized>
+        </AuthorizeView>
+
+        <!-- User -->
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" data- href="#">
+                <i class="fas fa-user-circle"></i>
+                <!--<span class="badge badge-danger navbar-badge">3</span>-->
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                <div class="card mb-0">
+                    <AuthorizeView>
+                        <Authorized>
+                            <div class="card-header">
+                                    <div class="row justify-content-center">
+                                        <img class="img-size-64 m-3 img-circle" src="/img/user1-128x128.jpg" alt="User Avatar" />
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <h5 class="card-title text-center">@context.User.Identity.Name</h5>
+                                    </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a class="list-group-item list-group-item-action" href="/identity/account/manage">Manage your account</a>
+                                    <a class="list-group-item list-group-item-action" href="/identity/account/register">Add an account</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-warning" href="/identity/account/logout">Sign out</a>
+                                </div>
+                            </div>
+                            <div class="card-footer"><p class="text-center fs-6">Privacy belaid - Servicevoorwaarden</p></div>
+                        </Authorized>
+                        <NotAuthorized>
+                            <div class="card-header">
+                                    <div class="row justify-content-center">
+                                        <img class="img-size-64 m-3 img-circle" src="/img/usericon.svg" alt="User Avatar" />
+                                    </div>
+                                    <div class="row justify-content-center">
+                                        <h5 class="card-title text-center">No Name</h5>
+                                    </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="list-group">
+                                    <a class="list-group-item list-group-item-action" href="/identity/account/register">Add an account</a>
+                                    <a class="list-group-item list-group-item-action list-group-item-primary" href="/identity/account/login">Sign in</a>
+                                </div>
+                            </div>
+                            <div class="card-footer"><p class="text-center fs-6">Privacy belaid - Servicevoorwaarden</p></div>
+                        </NotAuthorized>
+                    </AuthorizeView>
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>
+<!-- /.navbar -->

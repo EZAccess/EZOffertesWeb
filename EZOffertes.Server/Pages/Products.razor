@@ -1,0 +1,28 @@
+﻿@page "/Products/"
+@inherits ProductsBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Products"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Products">
+        <CardFreeContent>
+            <!-- Datagrid -->
+            <SfGrid DataSource="@Products" ID="Grid" @ref="DefaultGrid"
+                                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                                            Toolbar="@ToolbarItems">
+                <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="Product"></GridEvents>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field="ProductId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                    <GridColumn Field="ArticleCode" HeaderText="ArticleCode" TextAlign="TextAlign.Left" Width="60" />
+                    <GridColumn Field="ProductName" HeaderText="Product name" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="Description" HeaderText="Description" TextAlign="TextAlign.Left" Width="120" />
+                    <GridColumn Field="Unit" HeaderText="Unit" TextAlign="TextAlign.Left" Width="60" />
+                    <GridColumn Field="Price" HeaderText="Price" TextAlign="TextAlign.Right" Width="90" />
+                </GridColumns>
+            </SfGrid>
+            <!-- Datagrid -->
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

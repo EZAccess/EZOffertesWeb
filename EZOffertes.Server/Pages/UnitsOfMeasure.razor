@@ -1,0 +1,24 @@
+﻿@page "/UnitsOfMeasure/"
+@inherits UnitsOfMeasureBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Units of Measure"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Units of Measure">
+        <CardFreeContent>
+            <!-- Datagrid -->
+            <SfGrid DataSource="@UnitsOfMeasure" ID="Grid" @ref="DefaultGrid"
+                                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                                            Toolbar="@ToolbarItems">
+                <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="UnitOfMeasure"></GridEvents>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field="UnitOfMeasureId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                    <GridColumn Field="Unit" HeaderText="Unit" TextAlign="TextAlign.Left" Width="120" />
+                </GridColumns>
+            </SfGrid>
+            <!-- Datagrid -->
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

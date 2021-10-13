@@ -1,0 +1,41 @@
+﻿<div class="col-sm-12">
+    <div id="accordion1">
+        <div class="card card-info card-outline">
+            <div class="card-header">
+                <h3 class="card-title w-100">
+                    <a class="d-block w-100" data-toggle="collapse" href="#DefaultCard" aria-expanded="true">@CardHeader</a>
+                </h3>
+            </div>
+            <div id="DefaultCard" class="collapse show" data-parent="#accordion1">
+                <div style="padding: 0.5rem; min-height: 120px">
+                    <!--if (CardFreeContent != null)-->
+                    <!--{-->
+                    @CardFreeContent
+                    <!--}-->
+                    <!--else-->
+                    <!--{-->
+                    <!--if (CardBody != null) -->
+                    <!--{-->
+                    <!--<div class="card-body table-responsive p-0">-->
+                    <!--CardBody-->
+                    <!--</div>-->
+                    <!--}-->
+                    <!--if (CardFooter != null) -->
+                    <!--{-->
+                    <!--<div class="card-footer">-->
+                    <!--CardFooter-->
+                    <!--</div>-->
+                    <!--}-->
+                    <!--}-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public String CardHeader { get; set; }
+    //[Parameter] public RenderFragment CardBody { get; set; }
+    //[Parameter] public RenderFragment CardFooter { get; set; }
+    [Parameter] public RenderFragment CardFreeContent { get; set; }
+}

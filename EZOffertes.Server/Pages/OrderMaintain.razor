@@ -1,0 +1,49 @@
+﻿@page "/ordermaintain/{OrderId}/{CustomerId}"
+@inherits OrderMaintainBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Order Details"></ContentHeader>
+
+<MainContent>
+    <!-- Edit form -->
+    <OrderEditForm OrderId="@int.Parse(OrderId)" CustomerId="@int.Parse(CustomerId)" />
+
+    <!-- Datagrid -->
+    <ContentCard CardHeader="Orders">
+        <CardFreeContent>
+            <SfGrid DataSource="@OrderDetails" ID="Grid" @ref="DefaultGrid"
+                    AllowFiltering="false" 
+                    AllowPaging="true" 
+                    AllowSorting="true" 
+                    AllowExcelExport="true" 
+                    AllowPdfExport="true"
+                    Toolbar="@ToolbarItems">
+                <GridEvents 
+                    OnToolbarClick="HandleToolbarClick" 
+                    TValue="OrderDetail" />
+                <GridEditSettings 
+                    AllowAdding="true" 
+                    AllowEditing="true" 
+                    AllowDeleting="true" 
+                    ShowDeleteConfirmDialog="true" 
+                    NewRowPosition="NewRowPosition.Bottom" />
+                <GridColumns>
+                    <GridColumn Field="OrderDetailId" HeaderText="Id" TextAlign="TextAlign.Right" Width="0" IsPrimaryKey="true" IsIdentity="true" Visible="false" />
+                    <GridColumn Field="ProjectName" HeaderText="ProjectName" TextAlign="TextAlign.Left" Width="240" />
+                    <GridColumn Field="ProductCategory" HeaderText="ProductCategory" TextAlign="TextAlign.Left" Width="120" />
+                    <GridColumn Field="ProductId" HeaderText="ProductId" TextAlign="TextAlign.Left" Width="120" />
+                    <GridColumn Field="TextOffer" HeaderText="Text Offer" TextAlign="TextAlign.Left" Width="240" />
+                    <GridColumn Field="Quantity" HeaderText="Quantity" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="Unit" HeaderText="Unit" TextAlign="TextAlign.Left" Width="60" />
+                    <GridColumn Field="Price" HeaderText="Price" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="Calc_DetailAmount" HeaderText="Amount" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="OrderId" HeaderText="OrderId" DefaultValue="@OrderId" TextAlign="TextAlign.Left" Width="60" />
+                    <GridColumn Field="Sequence" HeaderText="Sequence" TextAlign="TextAlign.Left" Width="60" />
+                    <GridColumn Field="ShippingStatus" HeaderText="ShippingStatus" TextAlign="TextAlign.Left" Width="60" />
+                    <GridColumn Field="IsInternalComment" HeaderText="IsInternalComment" TextAlign="TextAlign.Left" Width="60" DisplayAsCheckBox="true" />
+                    <GridColumn Field="ActionSelect" HeaderText="ActionSelect" TextAlign="TextAlign.Left" Width="60" DisplayAsCheckBox="true" />
+                </GridColumns>
+            </SfGrid>
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>

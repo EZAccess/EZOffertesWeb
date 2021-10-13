@@ -1,0 +1,55 @@
+﻿@page "/customers/orderspercustomer/{id}"
+@inherits OrdersPerCustomerBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Orders per Customer"></ContentHeader>
+
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Edit Form -->
+            <RelationEditForm Id="@int.Parse(Id)" />
+
+            <ContentCard CardHeader="Orders">
+                <CardFreeContent>
+                    @if (Err.Code != null && Err.Code != "NotFound")
+                    {
+                        <div class="col-sm-12">
+                            <EZAlert CssClass="alert-danger">@Err.Message</EZAlert>
+                        </div>
+                    }
+                    else
+                    {
+                        <!-- Datagrid -->
+                        <div>
+                            <button class="btn btn-default m-1" @onclick="HandleAddOrder">Add Order</button>
+                            <button class="btn btn-default m-1" @onclick="HandleEditOrder">Edit Order</button>
+                            <button class="btn btn-default m-1" @onclick="HandleExcelExport">Excel Export</button>
+                        </div>
+                        <SfGrid DataSource="@Orders"
+                                ID="Grid" @ref="DefaultGrid"
+                                AllowFiltering="true"
+                                AllowPaging="true"
+                                AllowSorting="true"
+                                AllowExcelExport="true"
+                                AllowPdfExport="true">
+                            <GridEvents OnRecordClick="HandleRecordClick"
+                                        OnToolbarClick="HandleToolbarClick"
+                                        TValue="Order"></GridEvents>
+                            <GridEditSettings AllowAdding="false" AllowEditing="false" AllowDeleting="false" />
+                            <GridColumns>
+                                <GridColumn Field="OrderId" HeaderText="Id" TextAlign="TextAlign.Right" Width="60" IsPrimaryKey="true" IsIdentity="true" />
+                                <GridColumn Field="CustomerReference" HeaderText="Reference" TextAlign="TextAlign.Left" Width="240" />
+                                <GridColumn Field="OrderStatus" HeaderText="Status" TextAlign="TextAlign.Left" Width="120" />
+                                <GridColumn Field="OfferDate" HeaderText="Offer Date" TextAlign="TextAlign.Left" Width="120" />
+                                <GridColumn Field="OrderDate" HeaderText="Order Date" TextAlign="TextAlign.Left" Width="120" />
+                                <GridColumn Field="IsInvoiced" HeaderText="Invoiced" TextAlign="TextAlign.Left" Width="120" DisplayAsCheckBox="true" />
+                            </GridColumns>
+                        </SfGrid>
+                        <!-- Datagrid -->
+                    }
+                </CardFreeContent>
+            </ContentCard>
+        </div>
+    </div>
+</div>

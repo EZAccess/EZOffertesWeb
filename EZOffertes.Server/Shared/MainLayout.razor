@@ -1,0 +1,23 @@
+﻿@inherits LayoutComponentBase
+
+<div class="wrapper">
+    <NavBar />
+
+    <MainSideBar />
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        @Body
+    </div><!-- /.content-wrapper -->
+
+    <ControlSideBar />
+
+    <!--<MainFooter />-->
+
+</div>
+
+@code {
+    public string caption { get; set; }
+
+
+}

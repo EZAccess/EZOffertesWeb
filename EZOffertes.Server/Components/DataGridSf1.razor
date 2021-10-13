@@ -1,0 +1,21 @@
+﻿@inherits DataGridSf1Base
+
+<Syncfusion.Blazor.Grids.SfGrid TValue="Employee" ID="Grid" @ref="DefaultGrid" 
+                                AllowFiltering="false" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                                Toolbar="@(new List<string>() { "Add", "Edit", "Delete", "Cancel", "Update" })">
+    <Syncfusion.Blazor.Data.SfDataManager Url="https://localhost:44301/api/employees" Adaptor="Syncfusion.Blazor.Adaptors.WebApiAdaptor"></Syncfusion.Blazor.Data.SfDataManager>
+    <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="Employee"></GridEvents>
+    <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+    <GridColumns>
+        <GridColumn Field="EmployeeId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+        <GridColumn Field="FirstName" HeaderText="First name" TextAlign="TextAlign.Left" Width="90" />
+        <GridColumn Field="FamilyNamePrefix" HeaderText="Prefix" TextAlign="TextAlign.Left" Width="60" />
+        <GridColumn Field="FamilyName" HeaderText="Family name" TextAlign="TextAlign.Left" Width="90" />
+        <GridColumn Field="Title" HeaderText="Title" TextAlign="TextAlign.Left" Width="90" />
+        <GridColumn Field="Initials" HeaderText="Initials" TextAlign="TextAlign.Left" Width="90" />
+        <GridColumn Field="FunctionName" HeaderText="Function" TextAlign="TextAlign.Left" Width="90" />
+        <GridColumn Field="EmailAddress" HeaderText="Email" TextAlign="TextAlign.Left" Width="120" />
+        <GridColumn Field="Active" HeaderText="Active" TextAlign="TextAlign.Center" Width="60" DisplayAsCheckBox="true" />
+        <GridColumn Field="Clearance" HeaderText="Clearance" TextAlign="TextAlign.Center" Width="90" />
+    </GridColumns>
+</Syncfusion.Blazor.Grids.SfGrid>

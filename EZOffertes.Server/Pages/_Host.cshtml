@@ -1,0 +1,58 @@
+﻿@page "/"
+@namespace EZOffertes.Server.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EZOffertes | Server</title>
+    <base href="~/" />
+    <!-- turned off in favor of Admin LTE stuff
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    -->
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="EZOffertes.Server.styles.css" rel="stylesheet" />
+
+    <!-- here start the Admin LTE 3 stuff -->
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback" />
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css" />
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/adminlte.min.css" />
+
+    <!-- Syncfusion required stylesheets for datagrids and more -->
+    <link rel="stylesheet" href="_content/Syncfusion.Blazor/styles/fabric.css" />
+</head>
+
+<body class="hold-transition layout-fixed layout-navbar-fixed layout-footer-fixed">
+    <component type="typeof(App)" render-mode="ServerPrerendered" />
+
+    <div id="blazor-error-ui">
+        <environment include="Staging,Production">
+            An error has occurred. This application may no longer respond until reloaded.
+        </environment>
+        <environment include="Development">
+            An unhandled exception has occurred. See browser dev tools for details.
+        </environment>
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <!-- Additional Admin LTE script -->
+    <!-- jQuery -->
+    <script src="plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="js/adminlte.min.js"></script>
+
+    <!-- Original Blazor Script -->
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>

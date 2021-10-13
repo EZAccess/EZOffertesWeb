@@ -1,0 +1,26 @@
+﻿@page "/ProductCategories/"
+@inherits ProductCategoriesBase
+@attribute [Authorize]
+
+<ContentHeader Caption="Product Categories"></ContentHeader>
+
+<MainContent>
+    <ContentCard CardHeader="Product Categories">
+        <CardFreeContent>
+            <!-- Datagrid -->
+            <SfGrid DataSource="@ProductCategories" ID="Grid" @ref="DefaultGrid"
+                                            AllowFiltering="false" AllowPaging="true" AllowSorting="true" AllowExcelExport="true" AllowPdfExport="true"
+                                            Toolbar="@ToolbarItems">
+                <GridEvents OnToolbarClick="ToolbarClickHandler" TValue="ProductCategory"></GridEvents>
+                <GridEditSettings AllowAdding="true" AllowEditing="true" AllowDeleting="true" ShowDeleteConfirmDialog="true" NewRowPosition="NewRowPosition.Bottom"></GridEditSettings>
+                <GridColumns>
+                    <GridColumn Field="ProductCategoryId" HeaderText="Id" TextAlign="TextAlign.Right" Width="30" IsPrimaryKey="true" IsIdentity="true" />
+                    <GridColumn Field="ProductCategoryName" HeaderText="Category name" TextAlign="TextAlign.Left" Width="90" />
+                    <GridColumn Field="TsCreated" HeaderText="Created" TextAlign="TextAlign.Left" Width="60" AllowEditing="false" />
+                    <GridColumn Field="TsUpdated" HeaderText="Updated" TextAlign="TextAlign.Left" Width="60" AllowEditing="false" />
+                </GridColumns>
+            </SfGrid>
+            <!-- Datagrid -->
+        </CardFreeContent>
+    </ContentCard>
+</MainContent>
